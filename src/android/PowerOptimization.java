@@ -118,12 +118,9 @@ public class PowerOptimization extends CordovaPlugin {
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 Intent intent = new Intent();
-                PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
-                if (pm.isIgnoringBatteryOptimizations(packageName)){
-                    intent.setAction(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(intent);
-                }
+                intent.setAction(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
 
                 callbackContext.success();
                 return true;
